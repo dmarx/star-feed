@@ -1,0 +1,28 @@
+name: Update Star Feed
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'  # Runs every 8 hours. Adjust this as needed.
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        bucket: ['high', 'medium', 'low']
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Update Star Feed
+      run: ./update_star_feed.sh ${{ matrix.bucket }}
+
+    - name: Commit and push changes
+      run: |
+        git config user.name "GitHub Actions Bot"
+        git config user.email "<your-email>"
+        git add -A
+        git commit -m "Updated star feed for ${{ matrix.bucket }} bucket"
+        git push
