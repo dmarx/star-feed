@@ -1,8 +1,8 @@
 #!/bin/bash
 
-USERNAME="<Your-GitHub-Username>"
-TOKEN="<Your-Personal-Access-Token>"
-BUCKET=$1  # Passed from the GitHub Actions workflow
+USERNAME="dmarx"
+TOKEN=$1
+BUCKET=$2  # Passed from the GitHub Actions workflow
 
 # Function to get the last checked date for a user
 get_last_checked_date() {
