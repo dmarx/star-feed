@@ -3,6 +3,7 @@ name: Update Star Feed
 on:
   schedule:
     - cron: '0 */8 * * *'  # Runs every 8 hours. Adjust this as needed.
+  workflow_dispatch:
 
 jobs:
   update-feed:
