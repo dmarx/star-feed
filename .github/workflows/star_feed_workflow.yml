@@ -18,7 +18,9 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Update Star Feed
-      run: ./update_star_feed.sh ${{ secrets.GH_TOKEN }} ${{ matrix.bucket }}
+      run: |
+        chmod +x update_star_feed.sh
+        ./update_star_feed.sh ${{ secrets.GH_TOKEN }} ${{ matrix.bucket }}
 
     - name: Commit and push changes
       run: |
