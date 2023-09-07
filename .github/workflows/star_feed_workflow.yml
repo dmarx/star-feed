@@ -20,7 +20,7 @@ jobs:
     - name: Update Star Feed
       run: |
         chmod +x update_star_feed.sh
-        ./update_star_feed.sh ${{ secrets.GH_TOKEN }} ${{ matrix.bucket }}
+        ./update_star_feed.sh ${{ secrets.GH_TOKEN }} ${{ matrix.bucket }} ${{ secrets.GITHUB_TOKEN }}
 
     - name: Commit and push changes
       run: |
