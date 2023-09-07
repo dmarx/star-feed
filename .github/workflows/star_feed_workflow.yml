@@ -20,12 +20,17 @@ jobs:
     - name: Update Star Feed
       run: |
         chmod +x update_star_feed.sh
-        ./update_star_feed.sh ${{ secrets.GH_TOKEN }} ${{ matrix.bucket }} ${{ secrets.GITHUB_TOKEN }}
+        ./update_star_feed.sh ${{ secrets.GH_TOKEN }} ${{ matrix.bucket }}
 
-    - name: Commit and push changes
+    - name: Commit changes
       run: |
         git config user.name "GitHub Actions Bot"
         git config user.email "actions@github.com"
         git add -A
         git commit -m "Updated star feed for ${{ matrix.bucket }} bucket"
-        git push
+    #     git push
+    - name: Push changes 
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        force: true
