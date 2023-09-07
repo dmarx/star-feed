@@ -22,7 +22,7 @@ jobs:
     - name: Commit and push changes
       run: |
         git config user.name "GitHub Actions Bot"
-        git config user.email "<your-email>"
+        git config user.email "actions@github.com"
         git add -A
         git commit -m "Updated star feed for ${{ matrix.bucket }} bucket"
         git push
